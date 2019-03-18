@@ -9,12 +9,6 @@
 import Foundation
 
 struct Validation {
-    static func isValidEmailAddress(strEmail: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        return emailTest.evaluate(with: strEmail)
-    }
     
     static func isStringEmpty(_ theString: String?) -> Bool {
         if theString != nil {
@@ -28,53 +22,6 @@ struct Validation {
         } else {
             return true
         }
-    }
-    
-    static func stringValueForTheObject(theValue: Any?) -> String {
-        var strValue: String = ""
-        
-        guard theValue != nil else {
-            return strValue
-        }
-        
-        guard !(theValue is NSNull) else {
-            return strValue
-        }
-        
-        if ((theValue as? NSNumber) != nil) {
-            let theInt = Int(truncating: theValue as! NSNumber)
-            strValue  = String(theInt)
-        } else {
-            if ((theValue as? String) != nil) {
-                strValue = theValue as! String
-            }
-        }
-        
-        return strValue
-    }
-    
-    static func stringUptoIndex(theString: String, index: Int, isUpperCased: Bool) -> String {
-        if theString.count > index {
-            var strFinal = ""
-            
-            for (charIndex, theValue) in theString.enumerated() {
-                if charIndex < index {
-                    strFinal.append(theValue)
-                } else {
-                    break
-                }
-            }
-            
-            return (isUpperCased ? strFinal.uppercased() : strFinal)
-        }
-        
-        return ""
-    }
-}
-
-extension NSNumber {
-    func convertToString() -> String {
-        return String(format: "%@", self)
     }
 }
 
@@ -109,22 +56,5 @@ extension UIViewController {
         
         // 4. Present the alert.
         self.present(alert, animated: true, completion: nil)
-    }
-    
-    
-    func showYesOrNoAlert(strMessage: String, completionBlock: @escaping (Bool) -> Void) {
-        let actionYes = UIAlertAction(title: "Yes", style: .default) { (theAction) in
-            completionBlock(true)
-        }
-        
-        let actionNo = UIAlertAction(title: "No", style: .default) { (theAction) in
-            completionBlock(false)
-        }
-        
-        let theAlertController = UIAlertController(title: "", message: strMessage, preferredStyle: .alert)
-        theAlertController.addAction(actionYes)
-        theAlertController.addAction(actionNo)
-        
-        self.present(theAlertController, animated: true, completion: nil)
     }
 }

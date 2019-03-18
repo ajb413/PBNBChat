@@ -63,7 +63,7 @@
                 <outlet property="senderNameLabel" destination="6Jg-fP-Mf3" id="FUS-aP-iKl"/>
                 <outlet property="viewBackgroundText" destination="b8c-Wt-MCn" id="9Eb-6S-0JF"/>
             </connections>
-            <point key="canvasLocation" x="-549" y="75"/>
+            <point key="canvasLocation" x="-220" y="-20"/>
         </tableViewCell>
     </objects>
 </document>

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		80367839223BBCBE0079F791 /* SingleChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80367838223BBCBE0079F791 /* SingleChatViewController.swift */; };
+		80367839223BBCBE0079F791 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80367838223BBCBE0079F791 /* ChatViewController.swift */; };
 		80367846223BC1500079F791 /* SZTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 80367844223BC1500079F791 /* SZTextView.m */; };
 		80367849223BC8BD0079F791 /* SenderChatTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80367847223BC8BD0079F791 /* SenderChatTableViewCell.swift */; };
 		8036784A223BC8BD0079F791 /* SenderChatTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 80367848223BC8BD0079F791 /* SenderChatTableViewCell.xib */; };
@@ -25,7 +25,7 @@
 
 /* Begin PBXFileReference section */
 		0A23D0C6C24E4C36901E77BA /* Pods-PBNBChat.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PBNBChat.release.xcconfig"; path = "Pods/Target Support Files/Pods-PBNBChat/Pods-PBNBChat.release.xcconfig"; sourceTree = "<group>"; };
-		80367838223BBCBE0079F791 /* SingleChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleChatViewController.swift; sourceTree = "<group>"; };
+		80367838223BBCBE0079F791 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		8036783E223BBF170079F791 /* PBNBChat-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PBNBChat-Bridging-Header.h"; sourceTree = "<group>"; };
 		80367844223BC1500079F791 /* SZTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZTextView.m; sourceTree = "<group>"; };
 		80367845223BC1500079F791 /* SZTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZTextView.h; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 			isa = PBXGroup;
 			children = (
 				80EC3BA82237E02400DCCB66 /* AppDelegate.swift */,
-				80367838223BBCBE0079F791 /* SingleChatViewController.swift */,
+				80367838223BBCBE0079F791 /* ChatViewController.swift */,
 				80EC3BAC2237E02400DCCB66 /* Main.storyboard */,
 			);
 			path = ViewControllers;
@@ -274,7 +274,7 @@
 				80367850223BCF190079F791 /* MessageObj.swift in Sources */,
 				8036784D223BC8F10079F791 /* ReceiverChatTableViewCell.swift in Sources */,
 				80367846223BC1500079F791 /* SZTextView.m in Sources */,
-				80367839223BBCBE0079F791 /* SingleChatViewController.swift in Sources */,
+				80367839223BBCBE0079F791 /* ChatViewController.swift in Sources */,
 				80367849223BC8BD0079F791 /* SenderChatTableViewCell.swift in Sources */,
 				808BFD56223CAE350042ACA4 /* Validation.swift in Sources */,
 				80EC3BA92237E02400DCCB66 /* AppDelegate.swift in Sources */,

@@ -2,21 +2,21 @@
 //  SingleChatViewController.swift
 //  TheChat
 //
-//  Created by Agstya - Something New on 20/07/18.
+//  Created by Agstya - Something New on 07/03/18.
 //  Copyright © 2018 Agstya Technologies. All rights reserved.
 //
 
 import UIKit
 import PubNub
 
-class SingleChatViewController: UIViewController, PNObjectEventListener {
+class ChatViewController: UIViewController, PNObjectEventListener {
     
     // PubNub
     var client: PubNub!
     
-    let PUBLISH_KEY = "pub-c-76c815f9-51e4-4565-898e-24555268e619"
-    let SUBSCRIBE_KEY = "sub-c-99153532-457d-11e9-8534-9add990cf553"
-    let CHANNEL_NAME = "chat_channel"
+    let YOUR_PUBLISH_KEY = "pub-c-76c815f9-51e4-4565-898e-24555268e619"
+    let YOUR_SUBSCRIBE_KEY = "sub-c-99153532-457d-11e9-8534-9add990cf553"
+    let YOUR_CHANNEL_NAME = "chat_channel"
     
     
     // Others
@@ -24,7 +24,6 @@ class SingleChatViewController: UIViewController, PNObjectEventListener {
     var currentUUID: String = ""
     var currentUserName: String = ""
     var arrFetchedChatMessages = [MessageObj]()
-    var totalMessagesCount = 0
     
     // MARK:- IBOutlets | Variables -
     @IBOutlet weak var tblViewSingleChat: UITableView!
@@ -59,19 +58,19 @@ class SingleChatViewController: UIViewController, PNObjectEventListener {
     
     // PubNub
     func configurePubNub() {
-        let configuration = PNConfiguration(publishKey: PUBLISH_KEY, subscribeKey: SUBSCRIBE_KEY)
+        let configuration = PNConfiguration(publishKey: YOUR_PUBLISH_KEY, subscribeKey: YOUR_SUBSCRIBE_KEY)
         configuration.stripMobilePayload = false
         
         self.client = PubNub.clientWithConfiguration(configuration)
         self.client.addListener(self)
         
         // Subscribe to demo channel with presence observation
-        self.client.subscribeToChannels([CHANNEL_NAME], withPresence: true)
+        self.client.subscribeToChannels([YOUR_CHANNEL_NAME], withPresence: true)
     }
     
     
     func fetchChatHistory() {
-        self.client.historyForChannel(CHANNEL_NAME, withCompletion: { (result, status) in
+        self.client.historyForChannel(YOUR_CHANNEL_NAME, withCompletion: { (result, status) in
 
             if status == nil {
 
@@ -84,6 +83,7 @@ class SingleChatViewController: UIViewController, PNObjectEventListener {
 
                 print("All messeges from channel==>\((result?.data.messages)!)")
                 
+                self.arrFetchedChatMessages.removeAll()
                 var messageArr = result?.data.messages
                 messageArr?.reverse()
                 
@@ -152,8 +152,8 @@ class SingleChatViewController: UIViewController, PNObjectEventListener {
     func addKeyboardNotifications() {
         //Keyboard show/Hide notifications settings
         let notificationCenter = NotificationCenter.default
-        notificationCenter.addObserver(self, selector: #selector(SingleChatViewController.keyboardOnScreen(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
-        notificationCenter.addObserver(self, selector: #selector(SingleChatViewController.keyboardOffScreen(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(ChatViewController.keyboardOnScreen(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(ChatViewController.keyboardOffScreen(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
     }
     
@@ -271,33 +271,6 @@ class SingleChatViewController: UIViewController, PNObjectEventListener {
         
     }
     
-    // New presence event handling.
-    func client(_ client: PubNub, didReceivePresenceEvent event: PNPresenceEventResult) {
-        
-        // Handle presence event event.data.presenceEvent (one of: join, leave, timeout, state-change).
-        if event.data.channel != event.data.subscription {
-            
-            // Presence event has been received on channel group stored in event.data.subscription.
-        }
-        else {
-            
-            // Presence event has been received on channel stored in event.data.channel.
-        }
-        
-        if event.data.presenceEvent != "state-change" {
-            
-            print("\(String(describing: event.data.presence.uuid)) \"\(event.data.presenceEvent)'ed\"\n" +
-                "at: \(event.data.presence.timetoken) on \(event.data.channel) " +
-                "(Occupancy: \(event.data.presence.occupancy))");
-        }
-        else {
-            
-            print("\(String(describing: event.data.presence.uuid)) changed state at: " +
-                "\(event.data.presence.timetoken) on \(event.data.channel) to:\n" +
-                "\(String(describing: event.data.presence.state))");
-        }
-    }
-    
     // Handle subscription status change.
     func client(_ client: PubNub, didReceive status: PNStatus) {
         
@@ -356,7 +329,7 @@ class SingleChatViewController: UIViewController, PNObjectEventListener {
     }
 }
 
-extension SingleChatViewController: UITableViewDataSource {
+extension ChatViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrFetchedChatMessages.count
     }
@@ -379,7 +352,7 @@ extension SingleChatViewController: UITableViewDataSource {
     }
 }
 
-extension SingleChatViewController: UITableViewDelegate {
+extension ChatViewController: UITableViewDelegate {
     
 }
 

@@ -29,7 +29,7 @@
         <!--Global Chat-->
         <scene sceneID="0ZE-Lx-i3s">
             <objects>
-                <viewController storyboardIdentifier="SingleChatViewController" id="Afk-sD-Sjy" customClass="SingleChatViewController" customModule="PBNBChat" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ChatViewController" id="Afk-sD-Sjy" customClass="ChatViewController" customModule="PBNBChat" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bFH-nt-mYu">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
